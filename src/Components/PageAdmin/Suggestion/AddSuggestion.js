@@ -27,8 +27,9 @@ const AddSuggestion = () => {
 
         } else {
             SuggestionService.createSuggestion(username,suggestion).then((response) => {
-            
+                sessionStorage.setItem("active",response.data.active)
                 console.log(response.data.type)
+                console.log(response.data.activa)
                 console.log(response.data)
 
                 history.push('/suggestions');
@@ -87,11 +88,13 @@ const AddSuggestion = () => {
                                 
                                 <div className="inputfield">
                                     <label> Objet </label>
-                                    <div className='custom-selec'>
+                                    <div >
                                     <select value={objet} onChange={(e) => setObjet(e.target.value)}>
-                                        <option value="Agence" className=''>Agence</option>
+                                        
+                                    <option value="---------">--------------------</option>
+                                    <option value="Panne Technique">Panne Technique</option>
                                         <option value="Service">Service</option>
-                                        <option value="Panne Technique">Panne Technique</option>
+                                        <option value="Agence">Agence</option>
                                     </select>
                                     </div>
 </div>

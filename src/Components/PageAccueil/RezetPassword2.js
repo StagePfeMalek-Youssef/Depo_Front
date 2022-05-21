@@ -13,6 +13,7 @@ class RezetPassword2 extends Component {
           email: sessionStorage.getItem("emailrezetpassword"),
           code:"",
           password: "",
+          confirmepassword:"",
           error: ""
         };
       }
@@ -24,14 +25,31 @@ class RezetPassword2 extends Component {
       doRezetPassword = async (event) => {
         event.preventDefault();
         
-        AuthenticationService.rezetpassword(this.state.email,this.state.code,this.state.password).then(
+        AuthenticationService.compare(this.state.email,this.state.code,this.state.password,this.state.confirmepassword).then(
           (response)=> {
               if(response.result==1){
+                             
+                AuthenticationService.rezetpassword(this.state.email,this.state.code,this.state.password,this.state.confirmepassword).then(
+                          (resp)=>{
+                            if(resp.result==1){
                
-                    this.props.history.push('/signin');
-                  alert("le mot mot de passe est changer averc succes")
+                                 this.props.history.push('/signin');
+                            alert("le mot mot de passe est changer averc succes")
+                            }else{
+                            alert("ereur")
+                          }  
+                          }
+
+
+                );
+             
+
+
+
+
+
               }else{
-                  alert("erur")
+                  alert("le mot dev passe est le comfirme mot de passe sant incorerct")
               }  
           },
            
@@ -56,6 +74,16 @@ class RezetPassword2 extends Component {
            />
          </FormGroup>
 
+         <FormGroup>
+           <Label for="confirmepassword"><strong>Password</strong></Label>
+           <Input type="password" 
+             name="confirmepassword" id="confirmepassword"
+             value={this.state.confirmepassword}
+             placeholder="Enter confirmepassword"
+             autoComplete="confirmepassword"
+             onChange={this.changeHandler}
+           />
+         </FormGroup>
          <FormGroup>
            <Label for="password"><strong>Password</strong></Label>
            <Input type="password" 

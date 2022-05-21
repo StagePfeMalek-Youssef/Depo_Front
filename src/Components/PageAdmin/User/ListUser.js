@@ -5,7 +5,6 @@ import AdminUserService from '../../../services/AdminService/AdminUserService';
 import { BsFilePdfFill } from "react-icons/bs";
 import { FaFileCsv } from "react-icons/fa";
 import { BsFileEarmarkExcelFill } from "react-icons/bs";
-import UploadFilesUser from './UploadFilesUser';
 const ListUser = () => {
 
     const [users, setUsers] = useState([])
@@ -47,7 +46,7 @@ const ListUser = () => {
             <a href='http://localhost:8080/api/auth/admin/users/export/pdf'><BsFilePdfFill size={50}/></a>
             <a href='http://localhost:8080/api/auth/admin/users/export/excel'><BsFileEarmarkExcelFill size={50}/></a>
             
-            <UploadFilesUser/>
+
             <br></br>
     
                                    

@@ -7,9 +7,22 @@ class CommentaireService{
     getCommentaires(){
         return axios.get(Commentaire_API_BASE_URL);
     }
+
+    getCommentairesByUsernameAndTitresujet(usrename,titresujet){
+      return axios.get(Commentaire_API_BASE_URL+"/username/"+usrename+"/titresujet/"+titresujet);
+  }
+
+
+    getCommentairesByTitresujet(titresujet){
+      return axios.get(Commentaire_API_BASE_URL+"/titresujet/"+titresujet);
+  }
+
+  active(UserId){
+    return axios.put(Commentaire_API_BASE_URL +'/activeCommentaires/'+ UserId);
+    }
     
-createCommentaire(formData){
-return axios.post(Commentaire_API_BASE_URL,formData);
+createCommentaire(UserId,formData){
+return axios.post(Commentaire_API_BASE_URL+"/"+UserId,formData);
   }
 getCommentaireById(id){
 return axios.get(Commentaire_API_BASE_URL+"/"+id);

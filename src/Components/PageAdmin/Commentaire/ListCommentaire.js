@@ -29,7 +29,10 @@ const ListCommentaire = () => {
         });
     }
 
-
+    const activeCommentaire = (commentaireId) =>{
+        CommentaireService.active(commentaireId).then( res => {
+        })
+    }
 
     return (
         <div className='main__container'>
@@ -40,7 +43,7 @@ const ListCommentaire = () => {
                     <th className='th1'> Commentaire Id </th>
                     <th className='th1'> Message </th>
                     <th className='th1'> titreSujet </th>
-                    <th className='th1'> Actions </th>
+                    <th colspan="3"> Actions </th>
                 </thead>
                 <tbody>
                     {
@@ -52,6 +55,12 @@ const ListCommentaire = () => {
                                 <td>{commentaire.titresujet}</td>
                                 <td>
                                     <Link className="btn btn-info" to={`/edit-reclamation/${commentaire.id}`} >Update</Link>
+                                </td>
+                                <td>
+                                  <button className={commentaire.active===false ? "btn btn-warning" : "btn btn-success"} onClick = {() => activeCommentaire(commentaire.id)}
+                                  style = {{marginLeft:"10px"}}> Accept</button>
+                                </td>
+                                <td>
                                     <button className = "btn btn-danger" onClick = {() => deleteCommentaire(commentaire.id)}
                                     style = {{marginLeft:"10px"}}> Delete</button>
                                 </td>

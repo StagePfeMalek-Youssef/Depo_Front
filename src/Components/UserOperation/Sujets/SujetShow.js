@@ -8,14 +8,14 @@ const SujetShow = () => {
 
 
     const [sujets, setSujets] = useState([])
-
+    const username=sessionStorage.getItem("UserName");
     useEffect(() => {
 
         getAllSujet();
     }, [])
 
     const getAllSujet = () => {
-        SujetService.getAllSujets().then((response) => {
+        SujetService.getAllSujetsByUsername(username).then((response) => {
             setSujets(response.data)
             console.log(response.data);
         }).catch(error =>{
@@ -52,7 +52,7 @@ const SujetShow = () => {
              <article>
              
              <div key = {sujet.idSu}> 
-                 <p> le titre de sujet {sujet.titreSujet} et crier par <div className="btn btn-outline-primary"> {sujet.user.prenom}  {sujet.user.nom}</div> a {sujet.createdAt} </p><br></br>
+                 <p> le titre de sujet {sujet.titreSujet} et crier par <div className="btn btn-outline-primary">{sujet.username} </div> a {sujet.createdAt} </p><br></br>
                  <p> {sujet.message} </p>
        
 

@@ -46,11 +46,21 @@ class Login extends Component {
             (res) => {
               AuthenticationService.findRole(this.state.email, this.state.password).then(
                 (respp)=>{
-                sessionStorage.setItem("UserName", respp.username);
-                 sessionStorage.setItem("UserId", respp.id);
-                 sessionStorage.setItem("nomloign", respp.nom);
-                 sessionStorage.setItem("prenomloign", respp.prenom);
+                  sessionStorage.setItem("UserName", respp.username);
+                  sessionStorage.setItem("UserId", respp.id);
+                  sessionStorage.setItem("nomloign", respp.nom);
+                  sessionStorage.setItem("prenomloign", respp.prenom);
+                if(respp.roles=="ROLE_ADMIN"){
+                  this.props.history.push('/admin');
+                }else{
                   this.props.history.push('/profile');
+                }
+                  
+                  
+                  
+        
+               
+                 
                 }
               )
              
@@ -75,7 +85,13 @@ class Login extends Component {
     SocialService.loginWithGoogle(response.tokenId).then(data=> {
       AuthenticationService.signin(data.email,this.state.passwordSocial).then(
         ()=>{
+
+          AuthenticationService.signin(data.email,this.state.passwordSocial).then(
+         ()=>{
+          
           this.props.history.push('/profile');
+        }
+    );
         }
     );
   });

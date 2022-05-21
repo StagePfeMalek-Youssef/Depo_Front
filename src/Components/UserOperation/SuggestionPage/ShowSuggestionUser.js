@@ -7,17 +7,19 @@ import SuggestionService from '../../../services/AdminService/SuggestionService'
 const ShowSuggestionUser = () => {
 
     const [suggestions, setSuggestion] = useState([])
-    const prenom =sessionStorage.getItem("prenom")
-    const nom =sessionStorage.getItem("nom")
+    const username=sessionStorage.getItem("UserName");
     useEffect(() => {
 
         getAllSuggestions();
     }, [])
 
     const getAllSuggestions = () => {
-        SuggestionService.getAllSuggestion().then((response) => {
-            setSuggestion(response.data);
-            console.log(response.data);
+        SuggestionService.getAllSuggestionByUsername(username).then((response) => {
+            
+                setSuggestion(response.data);
+                console.log(response.data); 
+            
+            
         }).catch(error =>{
             console.log(error);
         })
@@ -43,7 +45,7 @@ const ShowSuggestionUser = () => {
                             <section className="sujet">
                             <article>
                             <div key = {suggestion.id}> 
-                            <p> le suggestions est crier a {suggestion.dateDeclaration} creer par <div className="btn btn-outline-primary">{prenom}{nom}</div> </p><br></br>
+                            <p> le suggestions est crier a {suggestion.dateDeclaration} creer par <div className="btn btn-outline-primary">{suggestion.username}</div> </p><br></br>
                             <p> {suggestion.message} </p>
                             <p>             
                 

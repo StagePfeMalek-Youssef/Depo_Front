@@ -37,22 +37,21 @@ const ListProduit = () => {
             <produit >
 
             
-             <div className='main__container' >
+             <div className='' >
               <h2 className = "main__title"> Tous Les Produits </h2>
               <UploadFilesProduit/>
               <Link to = "/add-produit" className = "btn btn-primary mb-2" > Ajouter Produit </Link>
               <table>
                 <thead>
-                    <th className='th1'> Produit Id </th>
-                    <th className='th2'> Numéro De Produit</th>
-                    <th className='th3'> Nom De Produit </th>
-                    <th className='th4'> Categorie </th>
-                    <th className='th5'> Titre</th>
-                    <th className='th6'> Description Courte</th>
-                    <th className='th7'> Description Longue </th>
-                    <th className='th8'> Date De L'ajout</th>
-                    <th className='th8'> mise a jour</th>
-                    <th className='th9'> Actions </th>
+                    <th> Numéro De Produit</th>
+                    <th> Nom De Produit </th>
+                    <th> Categorie </th>
+                    <th> Titre</th>
+                    <th> Description Courte</th>
+                    <th> Description Longue </th>
+                    <th> Date De L'ajout</th>
+                    <th> mise a jour</th>
+                    <th> Actions </th>
                 </thead>
                 <tbody>
                     {
@@ -60,7 +59,6 @@ const ListProduit = () => {
                             produit =>
                             <tr key = {produit.idPrd}> 
                                 <td> {produit.idPrd} </td>
-                                <td> {produit.numPrd} </td>
                                 <td>{produit.nomPrd}</td>
                                 <td>{produit.categorie}</td>
                                 <td>{produit.titre}</td>

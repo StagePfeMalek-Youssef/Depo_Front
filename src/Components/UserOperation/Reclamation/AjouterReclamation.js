@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom';
-import ReclamationService from '../../services/AdminService/ReclamationService';
-import 'bootstrap/dist/css/bootstrap.min.css';
-//import { ToastContainer, toast } from 'react-toastify';
-//import 'react-toastify/dist/ReactToastify.css';
-const AjouterReclamation = () => {
+import ReclamationService from '../../../services/AdminService/ReclamationService';
+
+const AddReclamation = () => {
 
     const [numDec, setNumDec] = useState('')
     const [message, setMessage] = useState('')
@@ -21,7 +19,7 @@ const AjouterReclamation = () => {
         if (id) {
             ReclamationService.updateRecmlamation(id, reclamation).then((response) => {
                 console.log(response.data)
-                history.push('/user')
+                history.push('/lesreclamations')
             }).catch(error => {
                 console.log(error)
             })
@@ -32,7 +30,7 @@ const AjouterReclamation = () => {
                 console.log(response.data.type)
                 console.log(response.data)
 
-                history.push('/reclamations');
+                history.push('/lesreclamations');
 
             }).catch(error => {
                 console.log(error)
@@ -72,19 +70,18 @@ const AjouterReclamation = () => {
                             title()
                         }
                         <div className="form">
-                        <div className="inputfield">
-                            
-                                
-                                    <label> Numéro De Declaration</label>
-                                    <input
-                                        type="number"
-                                        name="numDec"
-                                        className="input"
-                                        value={numDec}
-                                        onChange={(e) => setNumDec(e.target.value)}
-                                    >
-                                    </input>
+
+                             <div className="inputfield">
+                                    <label> Objet </label>
+                                    <div className='custom-selec'>
+                                    <select value={objet} onChange={(e) => setObjet(e.target.value)}>
+                                        <option value="Agence" className=''>Agence</option>
+                                        <option value="Service">Service</option>
+                                        <option value="Panne Technique">Panne Technique</option>
+                                    </select>
+                                    </div>
                                 </div>
+                       
 
                                 <div className="inputfield">
                                     <label> Ecrire Message </label>
@@ -99,19 +96,7 @@ const AjouterReclamation = () => {
                                 </div>
 
                                 
-                                <div className="inputfield">
-                                    <label> Objet </label>
-                                    <div className='custom-selec'>
-                                    <select value={objet} onChange={(e) => setObjet(e.target.value)}>
-                                    
-
-                                       <option value="---Sélectionner---" disabled>---Sélectionner---</option>
-                                        <option value="Agence">Agence</option>
-                                        <option value="Service">Service</option>
-                                        <option value="Panne Technique">Panne Technique</option>
-                                    </select>
-                                    </div>
-</div>
+                               
                                     
                                 
 
@@ -119,7 +104,7 @@ const AjouterReclamation = () => {
                                 
                               <div className='inputfield'>
                                 <button className="btn btn-success" onClick={(e) => saveOrUpdateReclamation(e)} >Envoyer </button>
-                                <Link to="/reclamations" className="btn btn-secondary" style = {{marginLeft:"10px"}}> Annuler </Link>
+                                <Link to="/lesreclamations" className="btn btn-secondary" style = {{marginLeft:"10px"}}> Annuler </Link>
                                 </div>
 
                         </div>
@@ -128,5 +113,4 @@ const AjouterReclamation = () => {
     )
 }
 
-export default AjouterReclamation
-
+export default AddReclamation

@@ -71,9 +71,10 @@ const AddSuggestionUser = () => {
                                     <label> Objet </label>
                                     <div className='custom-selec'>
                                     <select value={objet} onChange={(e) => setObjet(e.target.value)}>
-                                        <option value="Agence" className=''>Agence</option>
-                                        <option value="Service">Service</option>
+                                        <option value="-----------">---------------</option>
                                         <option value="Panne Technique">Panne Technique</option>
+                                        <option value="Agence">Agence</option>
+                                        <option value="Service">Service</option>                            
                                     </select>
                                     </div>
 </div>
@@ -84,7 +85,7 @@ const AddSuggestionUser = () => {
                                 
                               <div className='inputfield'>
                                 <button className="btn btn-success" onClick={(e) => saveOrUpdateSuggestion(e)} >Envoyer </button>
-                                <Link to="/suggestions" className="btn btn-secondary" style = {{marginLeft:"10px"}}> Annuler </Link>
+                                <Link to="/show-suggestion-user" className="btn btn-secondary" style = {{marginLeft:"10px"}}> Annuler </Link>
                                 </div>
 
                         </div>

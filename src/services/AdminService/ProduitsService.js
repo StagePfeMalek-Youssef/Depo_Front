@@ -8,6 +8,10 @@ class ProduitsService{
         return axios.get(PRODUIT_BASE_REST_API_URL)
     }
 
+    getAllProduitsByUsername(username){
+        return axios.get(PRODUIT_BASE_REST_API_URL+"/username/"+username)
+    }
+
     createProduit(userId,produit){
         return axios.post(PRODUIT_BASE_REST_API_URL+"/"+userId, produit)
     }

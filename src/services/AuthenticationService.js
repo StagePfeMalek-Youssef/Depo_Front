@@ -60,8 +60,15 @@ class AuthenticationService {
     })
   }
 
-  rezetpassword = (email,code,password) => {
-    return axios.post("http://localhost:8080/rezetPassword", {email,code,password})
+  rezetpassword = (email,code,password,confirmepassword) => {
+    return axios.post("http://localhost:8080/rezetPassword", {email,code,password,confirmepassword})
+    .then(response => { 
+        return response.data;
+    })
+  }
+
+  compare = (email,code,password,confirmepassword) => {
+    return axios.post("http://localhost:8080/compare", {email,code,password,confirmepassword})
     .then(response => { 
         return response.data;
     })

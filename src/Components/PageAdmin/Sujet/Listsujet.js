@@ -27,7 +27,10 @@ const Listsujet = () => {
         });
     }
     
-  
+    const activeSujet = (sujetId) =>{
+        SujetService.active(sujetId).then( res => {
+        })
+    }
 
     return (
         <div className='main__container'>
@@ -38,7 +41,7 @@ const Listsujet = () => {
                     <th className='th1'> Sujet Id </th>
                     <th className='th2'> Titre de Sujet</th>
                     <th className='th3'> Message </th>
-                    <th> Actions </th>
+                    <th colspan="3"> Actions </th>
                 </thead>
                 <tbody>
                     {
@@ -52,6 +55,12 @@ const Listsujet = () => {
 
                                 <td>
                                     <Link className="btn btn-info" to={`/edit-sujet/${sujet.idSu}`} >Update</Link>
+                                </td>
+                                <td>
+                                  <button className={sujet.active===false ? "btn btn-warning" : "btn btn-success"} onClick = {() => activeSujet(sujet.idSu)}
+                                  style = {{marginLeft:"10px"}}> Accept</button>
+                                </td>
+                                <td>
                                     <button className = "btn btn-danger" onClick = {() => deleteSujet(sujet.idSu)}
                                     style = {{marginLeft:"10px"}}> Delete</button>
                                 </td>

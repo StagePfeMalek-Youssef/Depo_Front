@@ -27,12 +27,11 @@ const AjouteSujet = () => {
         } else {
                 
             SujetService.createSujet(username,sujet).then((response) => {
-                sessionStorage.setItem("titreSujet", response.data.titreSujet);
-          
-                console.log(response.data.titreSujet)
                 sessionStorage.setItem("titresujet",response.data.titreSujet)
-                sessionStorage.setItem("prenom",response.data.user.prenom)
-                sessionStorage.setItem("nom",response.data.user.nom)
+                console.log(response.data.titreSujet)
+               console.log(response.data)
+               
+                
                 
 
                 

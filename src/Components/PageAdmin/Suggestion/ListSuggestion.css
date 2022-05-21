@@ -196,3 +196,21 @@ td, th {
       "main";
   }
 }
+
+.style{
+  width:70%;
+}
+.inactive-btn {
+  border: none;
+  padding: 8px;
+  border-radius: 12px;
+  color: white;
+  background: grey;
+}
+.active-btn {
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 12px;
+  background: black;
+}

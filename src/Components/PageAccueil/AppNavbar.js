@@ -65,15 +65,8 @@ class AppNavbar extends Component {
     <Nav className="mr-auto">
       <NavLink href="/home">Home</NavLink>
       {this.state.showUser && <NavLink href="/user">User</NavLink>}
-      {this.state.showPM && <NavLink href="/pm">PM</NavLink>}
       {this.state.showAdmin && <NavLink href="/admin">Admin</NavLink>}
-           <NavDropdown title="profile" id="nav-dropdown">
-             <NavDropdown.Item eventKey="4.1"> <Link  to={`/parametre`} >parametre</Link>|</NavDropdown.Item>
-             <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-             <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-             <NavDropdown.Divider />
-             <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-           </NavDropdown>
+          
     </Nav>
     <NavbarToggler onClick={this.toggle}/>
     <Collapse isOpen={this.state.isOpen} navbar>

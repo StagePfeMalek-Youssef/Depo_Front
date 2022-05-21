@@ -8,6 +8,10 @@ class ReclamationService{
         return axios.get(RECLAMATION_BASE_REST_API_URL)
     }
 
+    getAllReclamationByUsername(username){
+        return axios.get(RECLAMATION_BASE_REST_API_URL+"/username/"+username)
+    }
+
     createReclamation(username,reclamation){
         return axios.post(RECLAMATION_BASE_REST_API_URL+"/"+username, reclamation)
     }

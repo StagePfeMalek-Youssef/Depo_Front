@@ -34,7 +34,7 @@ class Parametre extends Component {
                          utilisateur {this.state.user.prenom}  {this.state.user.nom} creer le {this.state.user.dateajout}<br></br>
                          avec email :{this.state.user.email}<br></br>
 
-                         <Link  to={`/changePassword`} >change mot de passe </Link>||<Link  to={`/ChangeInfo`} >change mot de passe </Link>
+                         <Link  to={`/changePassword`} >Changer mot de passe </Link>||<Link  to={`/ChangeInfo`} >Changer Information </Link>
 
                         </div>
                         

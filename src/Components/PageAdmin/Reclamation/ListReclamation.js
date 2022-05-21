@@ -37,7 +37,6 @@ const ListReclamation = () => {
             <Link to = "/add-reclamation" className = "btn btn-primary mb-2" > Ajouter Reclamation </Link>
             <table>
             <thead>
-                    <th className='th1'> Reclamation Id </th>
                     <th className='th1'> Numéro De Declaration</th>
                     <th className='th1'> Message </th>
                     <th className='th1'> Objet </th>
@@ -49,7 +48,6 @@ const ListReclamation = () => {
                             reclamation =>
                             <tr key = {reclamation.id_R}> 
                                 <td> {reclamation.id_R} </td>
-                                <td> {reclamation.numDec} </td>
                                 <td> {reclamation.message} </td>
                                 <td>{reclamation.objet}</td>
                                 <td>

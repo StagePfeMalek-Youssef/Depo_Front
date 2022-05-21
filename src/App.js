@@ -24,8 +24,7 @@ import AddReclamationAdmin from './Components/PageAdmin/Reclamation/AddReclamati
 import ListReclamationAdmin from './Components/PageAdmin/Reclamation/ListReclamationAdmin';
 
 import LesAgence from './Components/UserOperation/LesAgence';
-import AjouterReclamation from './Components/UserOperation/AjouterReclamation';
-import AjouterSinistre from './Components/UserOperation/AjouterSinistre';
+import AjouterReclamation from './Components/UserOperation/Reclamation/AjouterReclamation';
 import Parametre from './Components/PageParametre/Parametre';
 import ChangePassword from './Components/PageParametre/ChangePassword';
 import ChangeInfo from './Components/PageParametre/ChangeInfo';
@@ -41,10 +40,15 @@ import ListSuggestionAdmin from './Components/PageAdmin/Suggestion/ListSuggestio
 import AddSuggestionAdmin from './Components/PageAdmin/Suggestion/AddSuggestionAdmin';
 import AddSuggestionUser from './Components/UserOperation/SuggestionPage/AddSuggestionUser';
 import ShowSuggestionUser from './Components/UserOperation/SuggestionPage/ShowSuggestionUser';
-import Addsujet from './Components/PageAdmin/Sujet/Addsujet';
+
 import Updatesujet from './Components/UserOperation/Sujets/Updatesujet';
 import ListCommentaireAdmin from './Components/PageAdmin/Commentaire/ListCommentaireAdmin';
 import AddCommentaireAdmin from './Components/PageAdmin/Commentaire/AddCommentaireAdmin';
+import ShowReclamation from './Components/UserOperation/Reclamation/ShowReclamation';
+import AjouterSinistre from './Components/UserOperation/Sinistre/AjouterSinistre';
+import ShowSinistre from './Components/UserOperation/Sinistre/ShowSinistre';
+import AjoutProduit from './Components/UserOperation/Produit/AjoutProduit'
+import ShowProduit from './Components/UserOperation/Produit/ShowProduit';
 
 
 function App() {
@@ -79,6 +83,18 @@ function App() {
           <Route path='/add-suggestion-user' exact={true} component={AddSuggestionUser}/>
           <Route path='/show-suggestion-user' exact={true} component={ShowSuggestionUser}/>
 
+          <Route path="/add-produit-user" component={AjoutProduit}/>
+          <Route path="/edit-produit-user/:id" component={AjoutProduit}/>
+          <Route path="/lesproduits" component={ShowProduit}/>
+
+          <Route path="/lessinistres" component={ShowSinistre}/>
+          <Route path="/add-sinistre-user" component={AjouterSinistre}/>
+          <Route path="/edit-sinistre-user/:id" component={AjouterSinistre}/>
+
+          <Route path="/lesreclamations" component={ShowReclamation}/>
+          <Route path="/add-reclamation-user" component={AjouterReclamation}/>
+          <Route path="/edit-reclamation-user/:id" component={AjouterReclamation}/>
+
           ////////////////////////////////////////////////////////
           <Route path='/Listusers' exact={true} component={ListUserAdmin}/>
           <Route path='/add-user' exact={true} component={AddUserAdmin}/>
@@ -95,11 +111,9 @@ function App() {
           <Route path="/sinistres" component={ListeSinistreAdmin}/>
           <Route path="/add-sinistre" component={AddSinistreAdmin}/>
           <Route path="/edit-sinistre/:id" component={AddSinistreAdmin}/>
-          <Route path="/add-sinistre-user" component={AjouterSinistre}/>
           //////////////////////////////////////////////////////////////
           <Route path="/reclamations" component={ListReclamationAdmin}/>
           <Route path="/add-reclamation" component={AddReclamationAdmin}/>
-          <Route path="/add-reclamation-user" component={AjouterReclamation}/>
           <Route path="/edit-reclamation/:id" component={AddReclamationAdmin}/>
           //////////////////////////////////////////////////////////////////
           <Route path="/ListeSujet" component={ListsujetAdmin}/>

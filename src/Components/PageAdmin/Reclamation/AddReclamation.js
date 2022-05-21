@@ -5,8 +5,6 @@ import ReclamationService from '../../../services/AdminService/ReclamationServic
 
 import './ListReclamation.css';
 const AddReclamation = () => {
-
-    const [numDec, setNumDec] = useState('')
     const [message, setMessage] = useState('')
     const [objet, setObjet] = useState('')
     const history = useHistory();
@@ -16,7 +14,7 @@ const AddReclamation = () => {
     const saveOrUpdateReclamation = (e) => {
         e.preventDefault();  
         
-        const reclamation = { numDec, message, objet }
+        const reclamation = { message, objet }
         const username=sessionStorage.getItem("UserName");
         if (id) {
             ReclamationService.updateRecmlamation(id, reclamation).then((response) => {
@@ -44,7 +42,6 @@ const AddReclamation = () => {
     useEffect(() => {
 
         ReclamationService.getRecmlamationById(id).then((response) => {
-            setNumDec(response.data.numDec)
             setMessage(response.data.message)
             setObjet(response.data.objet)
           
@@ -72,19 +69,17 @@ const AddReclamation = () => {
                             title()
                         }
                         <div className="form">
+
                         <div className="inputfield">
-                            
-                                
-                                    <label> Numéro De Declaration</label>
-                                    <input
-                                        type="number"
-                                        name="numDec"
-                                        className="input"
-                                        value={numDec}
-                                        onChange={(e) => setNumDec(e.target.value)}
-                                    >
-                                    </input>
-                                </div>
+                                    <label> Objet </label>
+                                    <div className='custom-selec'>
+                                    <select value={objet} onChange={(e) => setObjet(e.target.value)}>
+                                        <option value="Agence" className=''>Agence</option>
+                                        <option value="Service">Service</option>
+                                        <option value="Panne Technique">Panne Technique</option>
+                                    </select>
+                                    </div>
+                       </div>
 
                                 <div className="inputfield">
                                     <label> Ecrire Message </label>
@@ -99,16 +94,7 @@ const AddReclamation = () => {
                                 </div>
 
                                 
-                                <div className="inputfield">
-                                    <label> Objet </label>
-                                    <div className='custom-selec'>
-                                    <select value={objet} onChange={(e) => setObjet(e.target.value)}>
-                                        <option value="Agence" className=''>Agence</option>
-                                        <option value="Service">Service</option>
-                                        <option value="Panne Technique">Panne Technique</option>
-                                    </select>
-                                    </div>
-</div>
+                                
                                     
                                 
 

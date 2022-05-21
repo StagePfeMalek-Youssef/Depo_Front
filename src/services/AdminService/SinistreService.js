@@ -8,8 +8,12 @@ class SinistreService{
         return axios.get(SINISTRE_BASE_REST_API_URL)
     }
 
-    createSinistre(numPolicecontrat,formData){
-        return axios.post(SINISTRE_BASE_REST_API_URL+'/Upload/'+numPolicecontrat,formData)
+    getAllSinistresByUsername(username){
+        return axios.get(SINISTRE_BASE_REST_API_URL+"/username/"+username)
+    }
+
+    createSinistre(numPolicecontrat,username,formData){
+        return axios.post(SINISTRE_BASE_REST_API_URL+'/Upload/'+numPolicecontrat+"/"+username,formData)
     }
 
 

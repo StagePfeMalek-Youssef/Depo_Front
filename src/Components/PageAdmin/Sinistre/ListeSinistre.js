@@ -34,13 +34,12 @@ const ListeSinistre = () => {
             <Link to = "/add-sinistre" className = "btn btn-primary mb-2" > Ajouter Un Sinistre </Link>
             <table>
             <thead>
-                    <th className='th1'> Sinistre Id </th>
-                    <th className='th2'> Numéro De Sinistre</th>
-                    <th className='th3'> Date De Survenance </th>
-                    <th className='th4'>Etat</th>
-                    <th className='th5'>Lieu</th>
-                    <th className='th6'> Date De Déclaration </th>
-                    <th className='th7'>Type De Contrat</th>
+                    <th> Numéro De Sinistre</th>
+                    <th> Date De Survenance </th>
+                    <th>Etat</th>
+                    <th>Lieu</th>
+                    <th> Date De Déclaration </th>
+                    <th>Type De Contrat</th>
                     <th> Actions </th>
                 </thead>
                 <tbody>
@@ -49,7 +48,6 @@ const ListeSinistre = () => {
                             sinistre =>
                             <tr key = {sinistre.idS}> 
                                 <td> {sinistre.idS} </td>
-                                <td> {sinistre.numSinistre} </td>
                                 <td>{sinistre.dateSurvenance}</td>
                                 <td>{sinistre.etat}</td>
                                 <td>{sinistre.lieu}</td>

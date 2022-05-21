@@ -6,7 +6,6 @@ import './listSinistre.css'
 
 const AddSinistre = () => {
 
-    const [numSinistre, setNumSinistre] = useState('')
     const [dateSurvenance, setDateSurvenance] = useState('')
     const [etat, setEtat] = useState('')
     const [lieu, setLieu] = useState('')
@@ -15,11 +14,11 @@ const AddSinistre = () => {
     const [numPolicecontrat, setNumPolicecontrat] = useState('')
     const history = useHistory();
     const { id } = useParams();
+    const  username=sessionStorage.getItem("UserName");
     const formData = new FormData();
     formData.append("file", file);
     formData.append("etat",etat);
     formData.append("lieu",lieu);
-    formData.append("numSinistre",numSinistre);
     formData.append("dateSurvenance",dateSurvenance);
     formData.append("type",type);
 
@@ -35,7 +34,7 @@ const AddSinistre = () => {
 
         } else {
                 
-            SinistreService.createSinistre(numPolicecontrat,formData).then((response) => {
+            SinistreService.createSinistre(numPolicecontrat,username,formData).then((response) => {
 
                 console.log(response.data)
 
@@ -54,7 +53,6 @@ const AddSinistre = () => {
     useEffect(() => {
 
         SinistreService.getSinistreById(id).then((response) => {
-            setNumSinistre(response.data.numSinistre)
             setDateSurvenance(response.data.dateSurvenance)
             setEtat(response.data.etat)
             setLieu(response.data.lieu)
@@ -87,18 +85,6 @@ const AddSinistre = () => {
                             title()
                         }
                         <div className="form"  >
-                           
-                                <div className="inputfield">
-                                    <label> Numéro De Sinistre</label>
-                                    <input
-                                        type="number"
-                                        name="num_sinistre"
-                                        className="input"
-                                        value={numSinistre}
-                                        onChange={(e) => setNumSinistre(e.target.value)}
-                                    >
-                                    </input>
-                                </div>
 
                                 <div className="inputfield">
                                     <label> Date De Survenance</label>

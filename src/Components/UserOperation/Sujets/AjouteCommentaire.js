@@ -10,18 +10,18 @@ const AjouteCommentaire = () => {
     const [message, setMessage] = useState('')
     const history = useHistory();
     const { id } = useParams();
-    const  titreSujet=sessionStorage.getItem("titreSujet")
+    const UserId=sessionStorage.getItem("UserId")
+    const  titreSujet=sessionStorage.getItem("titresujet")
+    const username=sessionStorage.getItem("UserName");
     const formData = new FormData();
     formData.append("message", message);
     formData.append("titreSujet", titreSujet);
-
+    formData.append("username", username);
     const saveOrUpdateSujet = (e) => {
         e.preventDefault();
       
-        const Commentaire = { message }
-      
                 
-            CommentaireService.createCommentaire(formData).then((response) => {
+            CommentaireService.createCommentaire(UserId,formData).then((response) => {
                 
                 console.log(response.data)
                 sessionStorage.setItem("titre",response.data.titresujet)
@@ -73,7 +73,7 @@ const AjouteCommentaire = () => {
                                     </div>
                                 <div className='inputfield'>
                                 <button  className="comment-form-button"  onClick={(e) => saveOrUpdateSujet(e)} >Envoyer </button>
-                                <Link to="/sinistres"     className="comment-form-button comment-form-cancel-button" style = {{marginLeft:"10px"}}> Annuler </Link>
+                                <Link to="/SujetShow"     className="comment-form-button comment-form-cancel-button" style = {{marginLeft:"10px"}}> Annuler </Link>
                             </div>
 
                         </div>

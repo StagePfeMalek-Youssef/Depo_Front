@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom';
 import ProduitsService from '../../../services/AdminService/ProduitsService';
 
-import './listProduit.css';
-const AddProduit = () => {
+
+const AjoutProduit = () => {
 
     const [nomPrd, setNomPrd] = useState('')
     const [categorie, setCategorie] = useState('')
@@ -12,15 +12,15 @@ const AddProduit = () => {
     const [descLong, setDescLong] = useState('')
     const history = useHistory();
     const { id } = useParams();
-
+   
     const saveOrUpdateProduit = (e) => {
         e.preventDefault();
         const  username=sessionStorage.getItem("UserName");
-        const produit = { nomPrd, categorie, titre, descCourte, descLong,username }
+        const produit = {nomPrd, categorie, titre, descCourte, descLong, username }
         const UserId=sessionStorage.getItem("UserId")
         if (id) {
             ProduitsService.updateProduit(id, produit).then((response) => {
-                history.push('/produits')
+                history.push('/lesproduits')
             }).catch(error => {
                 console.log(error)
             })
@@ -30,7 +30,7 @@ const AddProduit = () => {
 
                 console.log(response.data)
 
-                history.push('/produits');
+                history.push('/lesproduits');
 
             }).catch(error => {
                 console.log(error)
@@ -70,7 +70,7 @@ const AddProduit = () => {
                             title()
                         }
                         <div className="form">
-
+                            
                                 <div className="inputfield">
                                     <label> Nom De Produit </label>
                                     <input
@@ -139,7 +139,7 @@ const AddProduit = () => {
                                 </div>
                             <div className='inputfield'>
                                 <button className="btn btn-success" onClick={(e) => saveOrUpdateProduit(e)} >Envoyer </button>
-                                <Link to="/produits" className="btn btn-secondary" style = {{marginLeft:"10px", color:"grren"}}> Annuler </Link>
+                                <Link to="/lesproduits" className="btn btn-secondary" style = {{marginLeft:"10px", color:"grren"}}> Annuler </Link>
                                 </div>
                             </div>
 
@@ -147,4 +147,4 @@ const AddProduit = () => {
     )
 }
 
-export default AddProduit;
+export default AjoutProduit;

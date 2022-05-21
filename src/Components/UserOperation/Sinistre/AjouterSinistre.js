@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom';
-import SinistreService from '../../services/AdminService/SinistreService';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SinistreService from '../../../services/AdminService/SinistreService';
 
     const AjouterSinistre = () => {
 
-        const [numSinistre, setNumSinistre] = useState('')
         const [dateSurvenance, setDateSurvenance] = useState('')
         const [etat, setEtat] = useState('')
         const [lieu, setLieu] = useState('')
@@ -14,11 +13,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         const [numPolicecontrat, setNumPolicecontrat] = useState('')
         const history = useHistory();
         const { id } = useParams();
+        const  username=sessionStorage.getItem("UserName");
         const formData = new FormData();
         formData.append("file", file);
         formData.append("etat",etat);
         formData.append("lieu",lieu);
-        formData.append("numSinistre",numSinistre);
         formData.append("dateSurvenance",dateSurvenance);
         formData.append("type",type);
     
@@ -27,18 +26,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
             const NumPolice=sessionStorage.getItem("NumPolice")
             if (id) {
                 SinistreService.updateSinistre(id,formData).then((response) => {
-                    history.push('/sinistres')
+                    history.push('/lessinistres')
                 }).catch(error => {
                     console.log(error)
                 })
     
             } else {
                     
-                SinistreService.createSinistre(numPolicecontrat,formData).then((response) => {
+                SinistreService.createSinistre(numPolicecontrat,username,formData).then((response) => {
     
                     console.log(response.data)
     
-                    history.push('/sinistres');
+                    history.push('/lessinistres');
     
                 }).catch(error => {
                     console.log(error)
@@ -53,7 +52,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
         useEffect(() => {
     
             SinistreService.getSinistreById(id).then((response) => {
-                setNumSinistre(response.data.numSinistre)
                 setDateSurvenance(response.data.dateSurvenance)
                 setEtat(response.data.etat)
                 setLieu(response.data.lieu)
@@ -87,18 +85,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
                             }
                             <div className="form"  >
                                
-                                    <div className="inputfield">
-                                        <label> Numéro De Sinistre</label>
-                                        <input
-                                            type="number"
-                                            name="num_sinistre"
-                                            className="input"
-                                            value={numSinistre}
-                                            onChange={(e) => setNumSinistre(e.target.value)}
-                                        >
-                                        </input>
-                                    </div>
-    
+                                   
                                     <div className="inputfield">
                                         <label> Date De Survenance</label>
                                         <input
@@ -174,7 +161,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
                                         </div>
                                     <div className='inputfield'>
                                     <button className="btn btn-success" onClick={(e) => saveOrUpdateSinistre(e)} >Envoyer </button>
-                                    <Link to="/sinistres" className="btn btn-secondary" style = {{marginLeft:"10px"}}> Annuler </Link>
+                                    <Link to="/lessinistres" className="btn btn-secondary" style = {{marginLeft:"10px"}}> Annuler </Link>
                                 </div>
     
                             </div>

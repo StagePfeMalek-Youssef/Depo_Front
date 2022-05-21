@@ -12,18 +12,19 @@ const ShowComment  = () => {
 
     const [Commentaires, setCommentaire] = useState([])
     const titresujet=sessionStorage.getItem("titresujet")
-    const titre=sessionStorage.getItem("titre")
-    const prenom =sessionStorage.getItem("prenom")
-    const nom =sessionStorage.getItem("nom")
+    const username=sessionStorage.getItem("UserName");
         useEffect(() => {
 
         getAllCommentaire();
     }, [])
 
     const getAllCommentaire = () => {
-        CommentaireService.getCommentaires().then((response) => {
-            setCommentaire(response.data)
-            console.log(response.data);
+        CommentaireService.getCommentairesByUsernameAndTitresujet(username,titresujet).then((response) => {
+    
+                setCommentaire(response.data)
+                console.log(response.data);
+            
+            
         }).catch(error =>{
             console.log(error);
         })
@@ -61,7 +62,7 @@ const ShowComment  = () => {
             
                 <div key = {Commentaire.id}> 
                 <div>
-                  <p> le commentaire est crier a {Commentaire.createdAt} creer par <div className="btn btn-outline-primary">{prenom}{nom}</div> </p><br></br>
+                  <p> le commentaire est crier a {Commentaire.createdAt} creer par <div className="btn btn-outline-primary">{Commentaire.username}</div> </p><br></br>
                   <p> {Commentaire.message} </p>
         
      
